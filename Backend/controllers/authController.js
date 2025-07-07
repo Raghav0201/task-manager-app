@@ -1,4 +1,3 @@
-// controllers/authController.js
 require('dotenv').config();
 
 const User = require('../models/User');
@@ -6,13 +5,12 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const { OAuth2Client } = require('google-auth-library');
 
-// ✅ Corrected: Only pass CLIENT_ID and CLIENT_SECRET here
 const client = new OAuth2Client(
   process.env.GOOGLE_CLIENT_ID,
   process.env.GOOGLE_CLIENT_SECRET
 );
 
-// 🔐 Local Registration
+//Local Registration
 const registerUser = async (req, res) => {
   try {
     const { name, email, password } = req.body;
@@ -32,7 +30,7 @@ const registerUser = async (req, res) => {
   }
 };
 
-// 🔐 Local Login
+// Local Login
 const loginUser = async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -101,8 +99,7 @@ const googleCallback = async (req, res) => {
     const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
       expiresIn: "7d",
     });
-
-    // ✅ Redirect to React frontend with token
+    
     const redirectUrl = `http://localhost:3000/auth/callback?token=${token}&name=${encodeURIComponent(
       user.name
     )}&email=${encodeURIComponent(user.email)}`;
