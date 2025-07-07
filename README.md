@@ -1,70 +1,89 @@
-# Getting Started with Create React App
+This project is a part of a hackathon run by https://www.katomaran.com
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Task Management Web-Application
 
-## Available Scripts
+A full-featured task management application built using the **MERN stack** with support for:
+- ✨ User Authentication (Google OAuth 2.0)
+- 🧾 Task CRUD (Create, Read, Update, Delete)
+- 🗂 Task sharing with other users via email invitation
+- 💅 macOS-inspired design with glassmorphism UI
 
-In the project directory, you can run:
+---
 
-### `npm start`
+## ⚙️ Tech Stack
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **Frontend**: React, Axios, CSS (glassmorphism & macOS style)
+- **Backend**: Node.js, Express, MongoDB, Mongoose
+- **Authentication**: Google OAuth 2.0
+- **Deployment**: Render
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
 
-### `npm test`
+## ✨ Features
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Google Sign-in (OAuth2)
+- Task creation with:
+  - Title
+  - Sub-tasks (steps)
+  - Due date
+- Edit / Delete / Toggle tasks
+- Share tasks with other users via email
+- Email invitation with link to task
+- Responsive UI with styled modal dialogs
 
-### `npm run build`
+---
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 🚀 Live Demo
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- Task Management System : https://task-frontend-ixkr.onrender.com/
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Project View 
 
-### `npm run eject`
+1. Login Page With Google 
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+![WhatsApp Image 2025-07-07 at 11 27 12_ad9ba519](https://github.com/user-attachments/assets/d4935b5e-3066-45ff-9a4e-74995480d43d)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+2. DashBoard Page
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+![WhatsApp Image 2025-07-07 at 11 30 44_b367290f](https://github.com/user-attachments/assets/7c482adc-3677-4c42-8285-231bdb1e485a)
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+3. Create New Task
 
-## Learn More
+![WhatsApp Image 2025-07-07 at 11 30 44_efaa181f](https://github.com/user-attachments/assets/0d1d9887-8a06-4a3e-a806-db727d3c07c2)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+4.Task Assigning 
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+![WhatsApp Image 2025-07-07 at 11 30 45_1d238441](https://github.com/user-attachments/assets/d5939fe9-ae9b-479f-b7b4-f46455c4dcdb)
 
-### Code Splitting
+5. Due date
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+![WhatsApp Image 2025-07-07 at 11 30 44_826b24e4](https://github.com/user-attachments/assets/7d67e9d9-ce56-4fee-bd82-e8e1a57be0fd)
 
-### Analyzing the Bundle Size
+6. Submit
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+![WhatsApp Image 2025-07-07 at 11 30 44_a42e2ed4](https://github.com/user-attachments/assets/40426c5b-50ac-4d23-9852-83d3c7890c7a)
 
-### Making a Progressive Web App
+7. New Task Saved in DashBoard
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+![WhatsApp Image 2025-07-07 at 11 30 44_0fb0ebd4](https://github.com/user-attachments/assets/5bc35aab-4e7b-4189-9940-0867ea1062cb)
 
-### Advanced Configuration
+8.Edit Task
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+![WhatsApp Image 2025-07-07 at 11 30 43_62d3060a](https://github.com/user-attachments/assets/193e5bba-6a63-4f85-9469-b23b696aba1c)
 
-### Deployment
+9. After Edit
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+![WhatsApp Image 2025-07-07 at 11 30 42_5d338b84](https://github.com/user-attachments/assets/67e83782-e193-48c4-abc9-3b0b5f70abe8)
 
-### `npm run build` fails to minify
+10. Share Option
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+![WhatsApp Image 2025-07-07 at 11 30 42_efa090c9](https://github.com/user-attachments/assets/38174b33-135f-460f-9ae4-ce9c300c797a)
+
+11. Sharing Person Mail ID
+
+![WhatsApp Image 2025-07-07 at 11 30 41_d59e2033](https://github.com/user-attachments/assets/a3751159-2d28-4d98-a464-174110b175da)
+
+12. Message Recived in Mail
+
+![WhatsApp Image 2025-07-07 at 11 30 41_c514cc1f](https://github.com/user-attachments/assets/d23c3bbf-195d-4ca0-9641-ca5e6d275433)
+
