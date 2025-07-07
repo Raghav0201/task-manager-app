@@ -1,10 +1,9 @@
-// pages/SingleTaskView.js
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 const SingleTaskView = () => {
-  const { id } = useParams(); // Get task ID from URL
+  const { id } = useParams();
   const [task, setTask] = useState(null);
   const navigate = useNavigate();
 
