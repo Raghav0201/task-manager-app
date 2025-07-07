@@ -86,7 +86,7 @@ const TaskItem = ({ task, onDeleted, onToggled, onUpdated }) => {
         <span>Due: {new Date(task.dueDate).toLocaleDateString()}</span>
       </div>
 
-      {/* ✅ Share Form appears only if Share clicked */}
+      {/* Share Form appears only if Share clicked */}
       {showShare && (
         <form onSubmit={shareTask} style={{ marginTop: '10px' }}>
           <input
@@ -101,7 +101,7 @@ const TaskItem = ({ task, onDeleted, onToggled, onUpdated }) => {
         </form>
       )}
 
-      {/* ✨ Edit Modal */}
+      {/* Edit Modal */}
       {showEdit && (
         <div className="modal-overlay">
           <div className="modal-content">
