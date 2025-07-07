@@ -1,4 +1,3 @@
-// middleware/authMiddleware.js
 const jwt = require('jsonwebtoken');
 const User = require('../models/User');
 
@@ -22,7 +21,7 @@ const protect = async (req, res, next) => {
 
       req.user = user;
 
-      console.log("🧪 Logged-in user:", req.user); // <- ADD THIS LINE
+      console.log("🧪 Logged-in user:", req.user);
       next();
     } catch (err) {
       console.error("❌ Token verification failed:", err.message);
