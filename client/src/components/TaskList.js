@@ -1,5 +1,3 @@
-// components/TaskList.js
-
 import React from 'react';
 import TaskItem from './TaskItem';
 
@@ -12,7 +10,7 @@ const TaskList = ({ tasks, onDeleted, onToggled, onUpdated }) => {
           task={task}
           onDeleted={onDeleted}
           onToggled={onToggled}
-          onUpdated={onUpdated} // ✅ pass to TaskItem
+          onUpdated={onUpdated}
         />
       ))}
     </ul>
