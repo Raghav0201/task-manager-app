@@ -1,8 +1,4 @@
-// controllers/taskController.js
-
 const Task = require('../models/Task');
-
-// controllers/taskController.js
 
 const createTask = async (req, res) => {
   try {
@@ -37,8 +33,6 @@ const getTasks = async (req, res) => {
   }
 };
 
-
-// ✅ Update task status (completed toggle)
 const toggleTask = async (req, res) => {
   try {
     const task = await Task.findOne({ _id: req.params.id, user: req.user._id });
@@ -71,9 +65,6 @@ const deleteTask = async (req, res) => {
   }
 };
 
-
-// Update task note
-// controllers/taskController.js
 
 const updateTask = async (req, res) => {
   try {
