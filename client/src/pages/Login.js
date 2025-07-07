@@ -1,7 +1,7 @@
 import React from 'react';
 import { FaGoogle } from "react-icons/fa";
 import { FaFilePen } from "react-icons/fa6";
-import '../styles/Login.css'; // make sure this file exists
+import '../styles/Login.css'; 
 
 const Login = () => {
   const handleGoogleLogin = () => {
