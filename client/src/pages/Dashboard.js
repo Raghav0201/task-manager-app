@@ -45,7 +45,6 @@ const Dashboard = () => {
           headers: { Authorization: `Bearer ${token}` },
         }
       );
-      // Update the task in local state
       setTasks(prev =>
         prev.map(t => (t._id === updatedTask._id ? res.data : t))
       );
