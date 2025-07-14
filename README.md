@@ -3,14 +3,14 @@ This project is a part of a hackathon run by https://www.katomaran.com
 ## Task Management Web-Application
 
 A full-featured task management application built using the **MERN stack** with support for:
-- ✨ User Authentication (Google OAuth 2.0)
-- 🧾 Task CRUD (Create, Read, Update, Delete)
-- 🗂 Task sharing with other users via email invitation
-- 💅 macOS-inspired design with glassmorphism UI
+-  User Authentication (Google OAuth 2.0)
+-  Task CRUD (Create, Read, Update, Delete)
+-  Task sharing with other users via email invitation
+-  macOS-inspired design with glassmorphism UI
 
 ---
 
-## ⚙️ Tech Stack
+## Tech Stack
 
 - **Frontend**: React, Axios, CSS (glassmorphism & macOS style)
 - **Backend**: Node.js, Express, MongoDB, Mongoose
@@ -19,7 +19,7 @@ A full-featured task management application built using the **MERN stack** with 
 
 ---
 
-## ✨ Features
+##  Features
 
 - Google Sign-in (OAuth2)
 - Task creation with:
@@ -33,7 +33,7 @@ A full-featured task management application built using the **MERN stack** with 
 
 ---
 
-## 🚀 Live Demo
+##  Live Demo
 
 - Task Management System : https://task-frontend-ixkr.onrender.com/
 
