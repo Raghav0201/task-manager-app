@@ -6,7 +6,7 @@ const TaskList = ({ tasks, onDeleted, onToggled, onUpdated }) => {
     <ul>
       {tasks.map(task => (
         <TaskItem
-          key={task._id}
+          key={task._id + task.completed}
           task={task}
           onDeleted={onDeleted}
           onToggled={onToggled}
@@ -15,6 +15,7 @@ const TaskList = ({ tasks, onDeleted, onToggled, onUpdated }) => {
       ))}
     </ul>
   );
+
 };
 
 export default TaskList;

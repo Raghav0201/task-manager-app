@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import '../App.css';
 
 const ShareTask = ({ taskId }) => {
   const [email, setEmail] = useState('');
   const [status, setStatus] = useState('');
+  const [isHovering, setIsHovering] = useState(false);
 
   const handleShare = async (e) => {
     e.preventDefault();
@@ -38,20 +40,7 @@ const ShareTask = ({ taskId }) => {
             fontSize: '14px'
           }}
         />
-        <button
-          type="submit"
-          style={{
-            padding: '10px 16px',
-            backgroundColor: '#007aff',
-            color: '#fff',
-            border: 'none',
-            borderRadius: '10px',
-            cursor: 'pointer',
-            fontWeight: 500
-          }}
-        >
-          Share
-        </button>
+        <button type="submit" className="send-btn">Share</button>
       </form>
       {status && <p style={{ marginTop: '5px', fontSize: '14px' }}>{status}</p>}
     </div>

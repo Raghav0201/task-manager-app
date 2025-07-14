@@ -1,17 +1,41 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { MdModeEdit } from "react-icons/md";
-import { MdDelete } from "react-icons/md";
+import { MdModeEdit, MdDelete } from "react-icons/md";
 import { FaShareAlt } from "react-icons/fa";
+import { useNavigate } from 'react-router-dom';
 
-const TaskItem = ({ task, onDeleted, onToggled, onUpdated }) => {
+const TaskItem = ({ task, onDeleted, onToggled }) => {
   const token = localStorage.getItem("token");
-  const [showEdit, setShowEdit] = useState(false);
   const [showShare, setShowShare] = useState(false);
   const [shareEmail, setShareEmail] = useState('');
-  const [title, setTitle] = useState(task.title);
-  const [todos, setTodos] = useState(task.todos);
-  const [dueDate, setDueDate] = useState(task.dueDate?.substring(0, 10) || '');
+  const [localCompleted, setLocalCompleted] = useState(!!task.completed);
+  const [timeLeft, setTimeLeft] = useState("");
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    setLocalCompleted(!!task.completed);
+  }, [task.completed]);
+
+  useEffect(() => {
+    const calculateTimeLeft = () => {
+      const now = new Date();
+      const due = new Date(task.dueDate);
+      const diff = due - now;
+
+      if (diff <= 0) {
+        setTimeLeft("Task date ended");
+        return;
+      }
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      setTimeLeft(`${days} days ${hours} hrs left`);
+    };
+
+    calculateTimeLeft();
+    const interval = setInterval(calculateTimeLeft, 60000);
+    return () => clearInterval(interval);
+  }, [task.dueDate]);
 
   const deleteTask = async () => {
     await axios.delete(`http://localhost:5000/api/tasks/${task._id}`, {
@@ -20,73 +44,94 @@ const TaskItem = ({ task, onDeleted, onToggled, onUpdated }) => {
     onDeleted(task._id);
   };
 
-  const shareTask = async () => {
+  const shareTask = async (e) => {
+    e.preventDefault();
     try {
-      const token = localStorage.getItem("token");
       await axios.post("http://localhost:5000/api/tasks/share", {
         taskId: task._id,
         email: shareEmail,
       }, {
         headers: { Authorization: `Bearer ${token}` }
       });
-      alert("Invitation sent successfully!");
+      alert("Task shared successfully!");
       setShareEmail('');
       setShowShare(false);
     } catch (err) {
       console.error("Error sharing task:", err.response?.data || err.message);
-      alert("Failed to send Invitation");
+      alert(err.response?.data?.message || "Failed to share task.");
     }
   };
 
+  const toggleComplete = async () => {
+    const newCompleted = !localCompleted;
+    setLocalCompleted(newCompleted);
 
-  const updateTask = async e => {
-    e.preventDefault();
     try {
       const res = await axios.put(
         `http://localhost:5000/api/tasks/${task._id}`,
-        { title, todos, dueDate },
+        { completed: newCompleted },
         { headers: { Authorization: `Bearer ${token}` } }
       );
-      onUpdated(res.data);
-      setShowEdit(false);
+      onToggled(res.data);
     } catch (err) {
-      alert("Error updating task");
+      console.error("Toggle error:", err);
+      alert("Failed to toggle completion.");
+      setLocalCompleted(!newCompleted);
     }
   };
 
-  const handleTodoChange = (index, value) => {
-    const updatedTodos = [...todos];
-    updatedTodos[index] = value;
-    setTodos(updatedTodos);
-  };
-
-  const addTodoField = () => {
-    setTodos([...todos, '']);
-  };
+  const strikeStyle = localCompleted ? {
+    textDecoration: 'line-through',
+    color: '#888'
+  } : {};
 
   return (
-    <div className="task-card">
-      <div className="task-header">
-        <h4>{task.title}</h4>
-        {/* <ShareTask taskId={task._id} /> */}
-        <div className="taskButtons">
-          <button onClick={() => setShowEdit(true)}><MdModeEdit /></button>
+    <div className="task-card compact-task-card" style={strikeStyle}>
+      <div className="compact-task-row">
+        <div className="compact-task-left">
+          <input
+            type="checkbox"
+            checked={localCompleted}
+            onChange={toggleComplete}
+            style={{ width: "18px", height: "18px", cursor: "pointer" }}
+          />
+          <h4 style={{ marginLeft: "10px", ...strikeStyle }}>{task.title}</h4>
+        </div>
+        <div className="compact-task-actions">
+          <button onClick={() => navigate(`/edit/${task._id}`)}><MdModeEdit /></button>
           <button onClick={deleteTask}><MdDelete /></button>
           <button onClick={() => setShowShare(prev => !prev)}><FaShareAlt /></button>
         </div>
       </div>
 
       <ul>
-        {task.todos.map((todo, idx) => (
-          <li key={idx}>{idx + 1}. {todo}</li>
-        ))}
+        {Array.isArray(task.todos) && task.todos.length > 0 && task.todos.some(t => t && t.trim()) ? (
+          task.todos
+            .filter(todo => todo && todo.trim())
+            .map((todo, i) => (
+              <li
+                key={i}
+                style={{ cursor: 'pointer', ...strikeStyle }}
+                onClick={(e) => {
+                  const current = e.target.style.textDecoration;
+                  e.target.style.textDecoration = current === 'line-through' ? 'none' : 'line-through';
+                  e.target.style.color = current === 'line-through' ? '#000' : '#888';
+                }}
+              >
+                {todo}
+              </li>
+            ))
+        ) : (
+          <li style={strikeStyle}>No steps added</li>
+        )}
       </ul>
 
-      <div className="task-footer">
-        <span>Due: {new Date(task.dueDate).toLocaleDateString()}</span>
+      <div className="task-footer" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', ...strikeStyle }}>
+        <span style={{ flex: 1 }}>Due: {new Date(task.dueDate).toLocaleDateString()}</span>
+        <span style={{ flex: 1, textAlign: 'center', fontWeight: '500' }}>{timeLeft}</span>
+        <span style={{ flex: 1, textAlign: 'right', fontWeight: '500' }}>Priority: {task.priorityType}</span>
       </div>
 
-      {/* Share Form appears only if Share clicked */}
       {showShare && (
         <form onSubmit={shareTask} style={{ marginTop: '10px' }}>
           <input
@@ -99,44 +144,6 @@ const TaskItem = ({ task, onDeleted, onToggled, onUpdated }) => {
           />
           <button type="submit">Send</button>
         </form>
-      )}
-
-      {/* Edit Modal */}
-      {showEdit && (
-        <div className="modal-overlay">
-          <div className="modal-content">
-            <h3>Edit Task</h3>
-            <form onSubmit={updateTask}>
-              <input
-                type="text"
-                value={title}
-                onChange={e => setTitle(e.target.value)}
-                placeholder="Task Title"
-                required
-              />
-              <h4>Update Steps</h4>
-              {todos.map((todo, idx) => (
-                <input
-                  key={idx}
-                  value={todo}
-                  onChange={e => handleTodoChange(idx, e.target.value)}
-                  placeholder={`Step ${idx + 1}`}
-                />
-              ))}
-              <button type="button" onClick={addTodoField}>+ Add Step</button>
-
-              <h4>Update Due Date</h4>
-              <input
-                type="date"
-                value={dueDate}
-                onChange={e => setDueDate(e.target.value)}
-              />
-
-              <button type="submit">Save</button>
-              <button type="button" onClick={() => setShowEdit(false)}>Cancel</button>
-            </form>
-          </div>
-        </div>
       )}
     </div>
   );
