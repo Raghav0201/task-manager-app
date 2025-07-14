@@ -5,11 +5,12 @@ const AuthCallback = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const alreadyLoggedIn = localStorage.getItem("token");
-    if (alreadyLoggedIn) {
+    const tokenFromStorage = localStorage.getItem("token");
+    if (tokenFromStorage) {
       navigate("/dashboard");
       return;
     }
+
     const params = new URLSearchParams(window.location.search);
     const token = params.get("token");
     const name = params.get("name");
