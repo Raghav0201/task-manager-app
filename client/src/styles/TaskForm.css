@@ -1,4 +1,4 @@
-/* TaskForm.css */
+/*TaskForm.css*/
 
 .new-task-button {
   background-color: #007aff;
@@ -17,7 +17,33 @@
   background-color: #005fcc;
 }
 
-/* Modal styles */
+/*Priority Dropdown Box*/
+select {
+  padding: 8px 12px;
+  border: 2px solid #e2e3e5dd;
+  border-radius: 6px;
+  font-size: 14px;
+  background-color: #f8f9fa;
+  color: #333;
+  margin-top: 8px;
+  width: 100%;
+  transition: border-color 0.3s ease;
+}
+label {
+  font-weight: 500;
+  margin-bottom: 6px;
+  display: block;
+}
+
+
+select:focus {
+  outline: none;
+  border-color: #0056b3;
+  background-color: #ffffff;
+}
+
+
+/*Modal styles*/
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -61,15 +87,12 @@
 }
 
 .modal-content button {
-  width: 100%;
-  padding: 12px;
-  margin-top: 10px;
-  border: none;
-  border-radius: 10px;
-  font-weight: 600;
-  font-size: 16px;
-  cursor: pointer;
-  transition: all 0.2s ease;
+  background-color: #007aff;
+  color: white;
+}
+
+.modal-content button:hover {
+  background-color: #005fcc;
 }
 
 .modal-content button[type="submit"] {
