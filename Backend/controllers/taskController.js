@@ -76,13 +76,22 @@ const deleteTask = async (req, res) => {
 
 const updateTask = async (req, res) => {
   try {
-    const task = await Task.findOne({ _id: req.params.id, createdBy: req.user._id });
+    const task = await Task.findOne({
+      _id: req.params.id,
+      $or: [
+        { createdBy: req.user._id },
+        { sharedWith: { $in: [req.user._id] } }
+      ]
+    });
+
     if (!task) return res.status(404).json({ message: "Task not found" });
 
-    const { title, todos, dueDate } = req.body;
-    task.title = title || task.title;
-    task.todos = Array.isArray(todos) ? todos : task.todos;
-    task.dueDate = dueDate || task.dueDate;
+    const { title, todos, dueDate, completed } = req.body;
+
+    if (title !== undefined) task.title = title;
+    if (todos !== undefined) task.todos = todos;
+    if (dueDate !== undefined) task.dueDate = dueDate;
+    if (completed !== undefined) task.completed = completed;
 
     await task.save();
     res.status(200).json(task);
@@ -91,6 +100,7 @@ const updateTask = async (req, res) => {
     res.status(500).json({ message: "Failed to update task" });
   }
 };
+
 
 const shareTask = async (req, res) => {
   const { taskId, email } = req.body;
