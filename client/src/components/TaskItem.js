@@ -4,7 +4,7 @@ import { MdModeEdit, MdDelete } from "react-icons/md";
 import { FaShareAlt } from "react-icons/fa";
 import { useNavigate } from 'react-router-dom';
 
-const TaskItem = ({ task, onDeleted, onToggled }) => {
+const TaskItem = ({ task, onDeleted, onToggled, onUpdated, disabledCheckbox = false }) => {
   const token = localStorage.getItem("token");
   const [showShare, setShowShare] = useState(false);
   const [shareEmail, setShareEmail] = useState('');
@@ -68,32 +68,53 @@ const TaskItem = ({ task, onDeleted, onToggled }) => {
 
     try {
       const res = await axios.put(
-        `http://localhost:5000/api/tasks/${task._id}`,
+        `http://localhost:5000/api/tasks/update/${task._id}`,
         { completed: newCompleted },
         { headers: { Authorization: `Bearer ${token}` } }
       );
-      onToggled(res.data);
+
+      if (onToggled) onToggled(res.data);
     } catch (err) {
       console.error("Toggle error:", err);
-      alert("Failed to toggle completion.");
-      setLocalCompleted(!newCompleted);
+      alert("Failed to toggle task.");
+      setLocalCompleted(!newCompleted); // Revert if failed
     }
   };
+
+
 
   const strikeStyle = localCompleted ? {
     textDecoration: 'line-through',
     color: '#888'
   } : {};
 
+
   return (
-    <div className="task-card compact-task-card" style={strikeStyle}>
+    <div
+  className="task-card compact-task-card"
+  style={{
+    maxWidth: "600px",
+    margin: "20px auto",
+    padding: "20px",
+    backgroundColor: "white",
+    borderRadius: "20px",
+    boxShadow: "0 2px 6px rgba(0, 0, 0, 0.1)",
+    ...strikeStyle
+  }}
+>
+
       <div className="compact-task-row">
         <div className="compact-task-left">
           <input
             type="checkbox"
             checked={localCompleted}
-            onChange={toggleComplete}
-            style={{ width: "18px", height: "18px", cursor: "pointer" }}
+            onChange={!disabledCheckbox ? toggleComplete : undefined}
+            disabled={disabledCheckbox}
+            style={{
+              width: "18px",
+              height: "18px",
+              cursor: disabledCheckbox ? "not-allowed" : "pointer"
+            }}
           />
           <h4 style={{ marginLeft: "10px", ...strikeStyle }}>{task.title}</h4>
         </div>
