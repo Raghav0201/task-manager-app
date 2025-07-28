@@ -1,3 +1,5 @@
+// src/pages/Dashboard.js
+
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
@@ -8,6 +10,7 @@ import '../App.css';
 
 const Dashboard = () => {
   const [tasks, setTasks] = useState([]);
+  const [searchQuery, setSearchQuery] = useState('');
   const navigate = useNavigate();
   const token = localStorage.getItem('token');
   const userName = localStorage.getItem('name');
@@ -24,6 +27,7 @@ const Dashboard = () => {
         const res = await axios.get('http://localhost:5000/api/tasks', {
           headers: { Authorization: `Bearer ${token}` },
         });
+
         setTasks(res.data);
       } catch (err) {
         console.error('Error loading tasks:', err);
@@ -65,25 +69,43 @@ const Dashboard = () => {
 
   return (
     <div>
-      <div className="dashboard-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '0 20px' }}>
+      <div className="dashboard-header" style={{
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        padding: '0 20px',
+        gap: '20px'
+      }}>
         <HamburgerMenu />
+
+        <input
+          type="text"
+          placeholder="Search tasks..."
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+          className="search-input"
+        />
+
         <button className="logout-button" onClick={handleLogout}>
           <i className="fa-solid fa-power-off"></i> Logout
         </button>
       </div>
 
-      <h2><i className="fa-solid fa-door-open"></i> Welcome, {userName}</h2>
-      <p style={{ textAlign: 'center', color: '#444' }}>
-        Your focus zone starts here <i className="fa-solid fa-jet-fighter"></i>
-      </p>
+      <div className="welcome-container">
+        <h2><i className="fa-solid fa-door-open"></i> Welcome, {userName}</h2>
+        <p>Your focus zone starts here <i className="fa-solid fa-jet-fighter"></i></p>
+      </div>
 
       <TaskForm onTaskAdded={addTask} />
       <TaskList
-        tasks={tasks}
+        tasks={tasks.filter(task =>
+          task.title.toLowerCase().includes(searchQuery.toLowerCase())
+        )}
         onDeleted={deleteTask}
         onToggled={toggleTask}
         onUpdated={updateTask}
       />
+
     </div>
   );
 };

@@ -48,9 +48,12 @@ const EditTaskPage = () => {
         todos: todos.filter(todo => todo.trim() !== '')
       };
 
-      await axios.put(`http://localhost:5000/api/tasks/${taskId}`, updated, {
-        headers: { Authorization: `Bearer ${token}` },
+      await axios.put(`http://localhost:5000/api/tasks/update/${taskId}`, { title, todos, dueDate }, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
       });
+
 
       alert('Task updated!');
       navigate('/dashboard');

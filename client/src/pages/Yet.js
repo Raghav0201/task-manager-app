@@ -29,7 +29,7 @@ const Yet = () => {
     <div>
       <HamburgerMenu />
       <h2>Pending Tasks</h2>
-      <TaskList tasks={tasks} />
+      <TaskList tasks={tasks} disabledCheckbox={true} />
     </div>
   );
 };

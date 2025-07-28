@@ -24,7 +24,7 @@ const Completed = () => {
     <div>
       <HamburgerMenu />
       <h2>Completed Tasks</h2>
-      <TaskList tasks={tasks} />
+      <TaskList tasks={tasks} disabledCheckbox={true} />
     </div>
   );
 };
