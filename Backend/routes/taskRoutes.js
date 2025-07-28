@@ -5,14 +5,16 @@ const protect = require('../middleware/authMiddleware');
 const {
   createTask,
   getTasks,
-  toggleTask, 
   deleteTask,
+  toggleTask,
+  updateTask,      
   shareTask
 } = require('../controllers/taskController');
 
+
 router.post('/', protect, createTask);
 router.get('/', protect, getTasks);
-router.put('/:id', protect, toggleTask);  
+router.put('/update/:id', protect, updateTask); 
 router.delete('/:id', protect, deleteTask);
 router.post('/share', protect, shareTask);
 
