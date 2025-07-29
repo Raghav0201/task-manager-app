@@ -78,11 +78,6 @@ A full-featured task management application built using the **MERN stack** with 
 
 <img width="1919" height="1014" alt="Screenshot 2025-07-28 214153" src="https://github.com/user-attachments/assets/4bdf493d-ab7d-440b-9d81-d309cba516eb" />
 
-
-8.Edit Task
-
-![WhatsApp Image 2025-07-07 at 11 30 43_62d3060a](https://github.com/user-attachments/assets/193e5bba-6a63-4f85-9469-b23b696aba1c)
-
-9. Search Task
+8. Search Task
 
 <img width="1919" height="1018" alt="Screenshot 2025-07-28 214221" src="https://github.com/user-attachments/assets/1918e769-da71-497e-b042-1da83cb4acb8" />
