@@ -1,4 +1,3 @@
-This project is a part of a hackathon run by https://www.katomaran.com
 
 ## Task Management Web-Application
 
@@ -19,17 +18,23 @@ A full-featured task management application built using the **MERN stack** with 
 
 ---
 
-##  Features
+## Features
 
-- Google Sign-in (OAuth2)
-- Task creation with:
-  - Title
-  - Sub-tasks (steps)
-  - Due date
-- Edit / Delete / Toggle tasks
-- Share tasks with other users via email
-- Email invitation with link to task
-- Responsive UI with styled modal dialogs
+-  **Google OAuth 2.0 Authentication**
+  - Secure login using your Google account
+-  **Task Management**
+  - Create, Read, Update, Delete (CRUD)
+  - Add sub-tasks (checklist format)
+  - Due date selection
+  - Toggle completion status
+-  **Task Sharing**
+  - Share tasks with other users via email
+  - Email contains a secure invitation link
+-  **macOS-Inspired Glass UI**
+  - Sleek, responsive layout with smooth animations
+  - Clean and modern modal dialogs
+-  **Search Functionality**
+  - Quickly filter tasks by title
 
 ---
 
@@ -37,53 +42,47 @@ A full-featured task management application built using the **MERN stack** with 
 
 - Task Management System : https://task-frontend-ixkr.onrender.com/
 
+---
+
 ## Project View 
 
 1. Login Page With Google 
 
-![WhatsApp Image 2025-07-07 at 11 27 12_ad9ba519](https://github.com/user-attachments/assets/d4935b5e-3066-45ff-9a4e-74995480d43d)
+<img width="1918" height="1019" alt="Screenshot 2025-07-28 214028" src="https://github.com/user-attachments/assets/abf82ccf-d13f-4d18-8c1d-63f29440c554" />
 
 2. DashBoard Page
 
-![WhatsApp Image 2025-07-07 at 11 30 44_b367290f](https://github.com/user-attachments/assets/7c482adc-3677-4c42-8285-231bdb1e485a)
+<img width="1919" height="1017" alt="Screenshot 2025-07-28 214052" src="https://github.com/user-attachments/assets/6135921e-7f76-4678-a1e2-1380e2473677" />
 
 3. Create New Task
 
-![WhatsApp Image 2025-07-07 at 11 30 44_efaa181f](https://github.com/user-attachments/assets/0d1d9887-8a06-4a3e-a806-db727d3c07c2)
+<img width="1919" height="1022" alt="Screenshot 2025-07-28 214102" src="https://github.com/user-attachments/assets/30b06309-1718-468a-b429-445b7b26a0af" />
 
-4.Task Assigning 
 
-![WhatsApp Image 2025-07-07 at 11 30 45_1d238441](https://github.com/user-attachments/assets/d5939fe9-ae9b-479f-b7b4-f46455c4dcdb)
+4.Task Filtering 
 
-5. Due date
+<img width="1882" height="1014" alt="Screenshot 2025-07-28 214120" src="https://github.com/user-attachments/assets/574c5256-4c06-4bea-abe6-7e7dad01d3ae" />
 
-![WhatsApp Image 2025-07-07 at 11 30 44_826b24e4](https://github.com/user-attachments/assets/7d67e9d9-ce56-4fee-bd82-e8e1a57be0fd)
 
-6. Submit
+5. Completed Tasks
 
-![WhatsApp Image 2025-07-07 at 11 30 44_a42e2ed4](https://github.com/user-attachments/assets/40426c5b-50ac-4d23-9852-83d3c7890c7a)
+<img width="1919" height="1018" alt="Screenshot 2025-07-28 214132" src="https://github.com/user-attachments/assets/dc35e3d0-b8a3-4ccb-b28e-6187e0b4cf7b" />
 
-7. New Task Saved in DashBoard
 
-![WhatsApp Image 2025-07-07 at 11 30 44_0fb0ebd4](https://github.com/user-attachments/assets/5bc35aab-4e7b-4189-9940-0867ea1062cb)
+6. Pending Tasks
+
+<img width="1919" height="1017" alt="Screenshot 2025-07-28 214142" src="https://github.com/user-attachments/assets/95180381-69e5-413b-a3c0-23d3fb2e4a68" />
+
+
+7. Prioritize (Early / Late)
+
+<img width="1919" height="1014" alt="Screenshot 2025-07-28 214153" src="https://github.com/user-attachments/assets/4bdf493d-ab7d-440b-9d81-d309cba516eb" />
+
 
 8.Edit Task
 
 ![WhatsApp Image 2025-07-07 at 11 30 43_62d3060a](https://github.com/user-attachments/assets/193e5bba-6a63-4f85-9469-b23b696aba1c)
 
-9. After Edit
+9. Search Task
 
-![WhatsApp Image 2025-07-07 at 11 30 42_5d338b84](https://github.com/user-attachments/assets/67e83782-e193-48c4-abc9-3b0b5f70abe8)
-
-10. Share Option
-
-![WhatsApp Image 2025-07-07 at 11 30 42_efa090c9](https://github.com/user-attachments/assets/38174b33-135f-460f-9ae4-ce9c300c797a)
-
-11. Sharing Person Mail ID
-
-![WhatsApp Image 2025-07-07 at 11 30 41_d59e2033](https://github.com/user-attachments/assets/a3751159-2d28-4d98-a464-174110b175da)
-
-12. Message Recived in Mail
-
-![WhatsApp Image 2025-07-07 at 11 30 41_c514cc1f](https://github.com/user-attachments/assets/d23c3bbf-195d-4ca0-9641-ca5e6d275433)
-
+<img width="1919" height="1018" alt="Screenshot 2025-07-28 214221" src="https://github.com/user-attachments/assets/1918e769-da71-497e-b042-1da83cb4acb8" />
